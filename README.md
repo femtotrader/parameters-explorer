@@ -1,6 +1,6 @@
 # parameters-explorer
 
-Explore parameters of a model.a
+Explore parameters of a model.
 
 Usage see unit test.
 
