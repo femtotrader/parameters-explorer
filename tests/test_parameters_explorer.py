@@ -28,3 +28,10 @@ def test_pe_example2_noexploration():
     assert parameters[0].rsi_period == 14
     assert parameters[0].rsi_min == 30.0
     assert parameters[0].rsi_max == 70.0
+
+
+def test_pe_example3_noparameters():
+    explorer = ParametersExplorer()
+    assert explorer.count_runs == 1
+    parameters = [p for p in explorer.parameters()]
+    assert parameters[0]._asdict() == {}
