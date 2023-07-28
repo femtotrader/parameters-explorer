@@ -35,3 +35,17 @@ def test_pe_example3_noparameters():
     assert explorer.count_runs == 1
     parameters = [p for p in explorer.parameters()]
     assert parameters[0]._asdict() == {}
+
+
+def test_pe_example4_noexploration_assert_type():
+    explorer = ParametersExplorer()
+    explorer.add_parameter("fast_period", 8)
+    explorer.add_parameter("slow_period", 12)
+    explorer.add_parameter("signal_period", 10)
+    explorer.add_parameter("rogers_satchell_vol_period", 30)
+    explorer.add_constraint(lambda p: p.fast_period < p.slow_period)
+    parameters = [p for p in explorer.parameters()]
+    assert isinstance(parameters[0].fast_period, int)
+    assert isinstance(parameters[0].slow_period, int)
+    assert isinstance(parameters[0].signal_period, int)
+    assert isinstance(parameters[0].rogers_satchell_vol_period, int)

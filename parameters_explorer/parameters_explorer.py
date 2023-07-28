@@ -30,10 +30,12 @@ class ParametersExplorer:
                 s += "\n\t\t" + repr(constraint)
         return s
 
-    def add_parameter(self, name, default, values=None, typ=float):
+    def add_parameter(self, name, default, values=None, typ=None):
         assert name not in self._parameters.names, f"parameter '{name}' was ever set"
         if values is None:
             values = [default]
+        if typ is None:
+            typ = type(default)
         self._parameters.names.append(name)
         self._parameters.default[name] = typ(default)
         self._parameters.values[name] = values
